@@ -1,10 +1,13 @@
 from django.db import models
-
-# Create your models here.
+from django.contrib.auth.models import User
+from apps.departamentos.models import Departamento
+from apps.empresas.models import Empresa
 
 class Funcionario(models.Model):
     nome = models.CharField(max_length=100, help_text="Nome do Funcionario")
-
+    user = models.ForeignKey(User, on_delete=models.PROTECT, unique=True)
+    departamentos = models.ManyToManyField(Departamento)
+    emprese = models.ForeignKey(Empresa, on_delete=models.PROTECT)
 
     def __str__(self) -> str:
         return self.nome
