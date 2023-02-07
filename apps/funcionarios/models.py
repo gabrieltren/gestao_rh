@@ -5,7 +5,7 @@ from apps.empresas.models import Empresa
 
 class Funcionario(models.Model):
     nome = models.CharField(max_length=100, help_text="Nome do Funcionario")
-    user = models.ForeignKey(User, on_delete=models.PROTECT, unique=True)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
     departamentos = models.ManyToManyField(Departamento)
     emprese = models.ForeignKey(Empresa, on_delete=models.PROTECT)
 
